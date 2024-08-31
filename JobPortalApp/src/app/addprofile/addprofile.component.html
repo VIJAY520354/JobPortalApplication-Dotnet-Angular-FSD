@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="card p-5 shadow rounded">
+    <h2 class="mb-4">Add Profile</h2>
+    <form [formGroup]="profileFormGroup" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Enter name">
+        <span *ngIf="profileFormGroup.get('name')?.touched && profileFormGroup.get('name')?.hasError('required')" class="text-danger">Name required</span>
+        <span *ngIf="profileFormGroup.get('name')?.hasError('pattern')" class="text-danger">Name should contain only characters and spaces</span>
+      </div>
+      <div class="form-group">
+        <label for="skills">Skills</label>
+        <input type="text" class="form-control" id="skills" name="skills" formControlName="skills" placeholder="Enter your skills">
+        <span *ngIf="profileFormGroup.get('skills')?.touched && profileFormGroup.get('skills')?.hasError('required')" class="text-danger">skills required</span>
+      </div>
+      <div class="form-group">
+        <label for="resume">Upload Resume</label>
+        <input type="file" class="form-control" id="resume" (change)="onFileSelected($event)">
+      </div>
+      <div class="form-group">
+        <label for="jobType">Job Type</label>
+        <select class="form-control" id="jobType" name="jobType" formControlName="jobType">
+          <option value="Internal">Internal</option>
+          <option value="External">External</option>
+        </select>
+        <span *ngIf="profileFormGroup.get('jobType')?.touched && profileFormGroup.get('jobType')?.hasError('required')" class="text-danger">
+          Job Type required
+        </span>
+      </div>
+      <br/>
+      <button type="submit" class="btn btn-primary me-2 mx-2">Add</button>
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Cancel</button>
+    </form>
+  </div>
+</div>

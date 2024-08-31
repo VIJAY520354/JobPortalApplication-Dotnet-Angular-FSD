@@ -1,0 +1,111 @@
+
+<div class="container mt-5">
+    <!-- <a class="nav-link" routerLink="/addprofiles" routerLinkActive="active">add</a> -->
+    <div class="d-flex mb-4">
+     <Button type="button" class="btn btn-warning btn-lg me-3" (click)="AddProfile()" >Add Profile</Button> 
+       <input type="text" #searchBox class="form-control w-25" placeholder="Search Profiles by name"*ngIf="checkAdmin()" (input)="onSearch(searchBox.value)"> 
+    </div>  
+   <h2 class="mb-4">Profile Table: {{jd}} : {{rrid}}</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Profile Status</th>
+          <th scope="col">Job Type</th>
+          <th scope="col">Resume</th>
+          <th scope="col" *ngIf="checkAdmin()">Actions</th>
+          <th scope="col">Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profile of filteredProfiles">
+          <td>{{profile.id }}</td>
+          <td>{{profile.name | uppercase}}</td>
+          <td [ngStyle]="{'color': isSelected(profile) ? ' green' : 'red'}">
+            <span *ngIf="isSelected(profile)">{{profile.status}}</span>
+            <span *ngIf=" profile.status=='NotSelected'">Rejected</span>
+            <span *ngIf=" profile.status=='In Progress'" [ngStyle]="{'color': 'blue'}">{{profile.status}}</span> 
+          </td>
+          <td>{{profile.jobType}}</td>
+          <td> <button type="button" class="btn btn-primary me-2" (click)="onDownload(profile.filePath)">Download</button> </td>
+          <td *ngIf="checkAdmin()">
+            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#profileEditModal" (click)="onUpdate(profile)" >Edit</button>
+            <button type="button" class="btn btn-danger me-2" (click)="onDelete(profile.id)">Delete</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#remarksModal" (click)="onUpdate(profile)" >Add Remarks</button>
+          </td>
+        </tr>
+       
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary btn-lg w-10" (click)="onBack()">Back</button>
+ 
+    <div class="container-fluid top-10">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="profileEditModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Profile Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <form [formGroup]="profileFormGroup" (ngSubmit)="onSubmit()" >
+                  <div class="form-group" *ngIf="!checkAdmin()">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Enter name">
+                    <span *ngIf="profileFormGroup.get('name')?.touched && profileFormGroup.get('name')?.hasError('required')"  class="text-danger" >name required</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status" name="status" formControlName="status">
+                      <option value="Selected">Select</option>
+                      <option value="NotSelected">Reject</option>
+                    </select>
+                    <span *ngIf="profileFormGroup.get('status')?.touched && profileFormGroup.get('status')?.hasError('required')" class="text-danger">
+                      Status required
+                    </span>
+                  </div>
+                         
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  
+                  </div>
+                </form>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<!-- Remarks Modal -->
+<div class="modal fade" id="remarksModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+              <form [formGroup]="profileFormGroup" (ngSubmit)="onSubmit()" >
+                <div class="form-group">
+                  <label for="remarks">Remarks</label>
+                  <textarea class="form-control" id="remarks" name="remarks" formControlName="remarks" placeholder="Enter Your Remarks"></textarea>
+                </div>   
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  
+                </div>
+              </form>
+          </div>
+          
+      </div>
+      
+  </div>
+</div>

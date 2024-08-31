@@ -1,0 +1,82 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+    <!-- Left side with image -->
+    <div class="col-md-7 d-none d-md-block p-0 image-container">
+      <img
+        src="https://www.aalpha.net/wp-content/uploads/2021/05/job_search_portals.png"
+        class="img-fluid h-100 w-100"
+        alt="Image"
+      />
+    </div>
+
+    <!-- Right side with form -->
+    <div
+      class="col-md-5 d-flex justify-content-center align-items-center form-container"
+    >
+      <div class="form-wrapper">
+        <h3 class="heading">Welcome to Job Portal</h3>
+        <h4 class="subheading">Login</h4>
+        <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-4">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              formControlName="email"
+              placeholder="Enter your email"
+            />
+            <span
+              *ngIf="
+                loginFormGroup.get('email')?.touched &&
+                loginFormGroup.get('email')?.hasError('required')
+              "
+              class="error-message"
+              >Email is required</span
+            >
+            <span
+              *ngIf="
+                loginFormGroup.get('email')?.touched &&
+                loginFormGroup.get('email')?.hasError('email')
+              "
+              class="error-message"
+              >Invalid email address</span
+            >
+          </div>
+
+          <div class="form-group mb-4">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              formControlName="password"
+              placeholder="Enter your password"
+            />
+            <span
+              *ngIf="
+                loginFormGroup.get('password')?.touched &&
+                loginFormGroup.get('password')?.hasError('required')
+              "
+              class="error-message"
+              >Password is required</span
+            >
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn btn-submit">Login</button>
+            <button
+              type="button"
+              class="btn btn-register"
+              (click)="onRegister()"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

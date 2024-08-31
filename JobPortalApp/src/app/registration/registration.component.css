@@ -1,0 +1,160 @@
+/* Base container styling */
+.container-fluid {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Image container */
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    filter: brightness(0.6);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+}
+
+/* Form container */
+.form-container {
+    background: linear-gradient(135deg, #ffffff, #f9fafb);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+}
+
+/* Heading styles */
+.heading {
+    font-size: 2rem;
+    color: #3b82f6; /* Vibrant blue color */
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #3b82f6, #1e40af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-text 4s ease infinite;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    color: #1f2937; /* Dark gray color */
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 2px solid #3b82f6; /* Blue color */
+    border-radius: 12px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #f1f5f9; /* Light gray background */
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #1e3a8a; /* Dark blue color */
+    box-shadow: 0 0 8px rgba(30, 58, 138, 0.3); /* Dark blue glow */
+    outline: none;
+}
+
+/* Error messages */
+.error-message {
+    font-size: 0.875rem;
+    color: #ef4444; /* Red color */
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #3b82f6; /* Blue color */
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #2563eb; /* Darker blue color */
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #fbbf24; /* Yellow color */
+    border: none;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: #f59e0b; /* Darker yellow color */
+    transform: scale(1.05);
+}
+
+/* Animation for gradient text */
+@keyframes gradient-text {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-7 {
+        display: block; /* Show image on small screens */
+    }
+
+    .form-container {
+        background: none; /* Removes the background effect */
+        padding: 1rem;
+    }
+
+    .heading {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,139 @@
+/* Container Styling */
+.container {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Soft blue gradient background */
+}
+
+/* Card Styling */
+.card {
+    background: #ffffff; /* White background for the card */
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Heading Styling */
+h2 {
+    color: #1f2937; /* Dark gray color for the heading */
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    position: relative;
+}
+
+/* Decorative underline for heading */
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #4f46e5; /* Blue color */
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 1.75rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    color: #4b5563; /* Slightly lighter gray for labels */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 2px solid #d1d5db; /* Light gray border */
+    border-radius: 12px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #ffffff; /* White background */
+    color: #1f2937; /* Dark gray text color */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+.form-control:focus {
+    border-color: #4f46e5; /* Blue border on focus */
+    box-shadow: 0 0 0 3px rgba(79, 115, 232, 0.2); /* Blue glow effect */
+    outline: none;
+}
+
+/* Error Message Styling */
+.text-danger {
+    font-size: 0.875rem;
+    color: #ef4444; /* Red color for error messages */
+    margin-top: 0.25rem;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #4f46e5; /* Blue color */
+    border: none;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #4338ca; /* Darker blue color on hover */
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #e5e7eb; /* Light gray color */
+    border: none;
+    color: #1f2937;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db; /* Slightly darker gray on hover */
+    transform: scale(1.05);
+}
+
+/* File Input Styling */
+input[type="file"] {
+    border: 2px solid #d1d5db; /* Light gray border */
+    border-radius: 12px;
+    padding: 0.75rem;
+    background-color: #ffffff; /* White background */
+    color: #1f2937; /* Dark gray text color */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+input[type="file"]:focus {
+    border-color: #4f46e5; /* Blue border on focus */
+    box-shadow: 0 0 0 3px rgba(79, 115, 232, 0.2); /* Blue glow effect */
+    outline: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem;
+        max-width: 100%;
+    }
+}

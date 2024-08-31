@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="card p-5 shadow rounded">
+    <h2 class="mb-4">Add Job Position</h2>
+    <form [formGroup]="jobFormGroup" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="rrid">RRID</label>
+            <input type="text" class="form-control" id="rrid" name="rrid" formControlName="rrid" placeholder="Enter RRID">
+            <span *ngIf="jobFormGroup.get('rrid')?.touched && jobFormGroup.get('rrid')?.hasError('required')" class="text-danger">RRID required</span>
+            <span *ngIf="jobFormGroup.get('rrid')?.hasError('pattern')" class="text-danger">RRID should contain numbers only</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="jobDescription">Job Description</label>
+            <textarea class="form-control" id="jobDescription" name="jobDescription" formControlName="jobDescription" placeholder="Enter job description"></textarea>
+            <span *ngIf="jobFormGroup.get('jobDescription')?.touched && jobFormGroup.get('jobDescription')?.hasError('required')" class="text-danger">Job description required</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="noOfPositions">Open Positions (Internal)</label>
+            <input type="number" class="form-control" id="noOfPositions" name="noOfPositions" formControlName="noOfPositions" placeholder="Enter number of positions">
+            <span *ngIf="jobFormGroup.get('noOfPositions')?.touched && jobFormGroup.get('noOfPositions')?.hasError('required')" class="text-danger">Number of positions required</span>
+            <span *ngIf="jobFormGroup.get('noOfPositions')?.hasError('pattern')" class="text-danger">Field should not be negative</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="externalPositions">Open Positions (External)</label>
+            <input type="number" class="form-control" id="externalPositions" name="externalPositions" formControlName="externalPositions" placeholder="Enter number of positions">
+            <span *ngIf="jobFormGroup.get('externalPositions')?.touched && jobFormGroup.get('externalPositions')?.hasError('required')" class="text-danger">Number of positions required</span>
+            <span *ngIf="jobFormGroup.get('externalPositions')?.hasError('pattern')" class="text-danger">Field should not be negative</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="selectedPositions">Closed Positions</label>
+            <input type="number" class="form-control" id="selectedPositions" name="selectedPositions" formControlName="selectedPositions" placeholder="Enter number of selected positions">
+            <span *ngIf="jobFormGroup.get('selectedPositions')?.touched && jobFormGroup.get('selectedPositions')?.hasError('required')" class="text-danger">Selected positions required</span>
+            <span *ngIf="jobFormGroup.get('selectedPositions')?.hasError('pattern')" class="text-danger">Field should not be negative</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="jobStatus">Job Status</label>
+            <select class="form-control" id="jobStatus" name="jobStatus" formControlName="status">
+              <option value="Active" selected>Active</option>
+              <option value="InActive">InActive</option>
+            </select>
+            <span *ngIf="jobFormGroup.get('status')?.touched && jobFormGroup.get('status')?.hasError('required')" class="text-danger">Job status required</span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary me-2 mx-2">Add</button>
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Cancel</button>
+    </form>
+  </div>
+</div>

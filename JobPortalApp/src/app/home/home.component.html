@@ -1,0 +1,101 @@
+<div class="container mt-3">
+  <h2 class="text-primary text-center mb-3">Welcome to Job Request Table {{ userName }}!</h2> <!-- Centered title with minimal margin -->
+  <br/>
+  <div class="row justify-content-between align-items-center mb-4"> <!-- Left and right aligned row for buttons -->
+    <div class="col-auto">
+      <button type="button" class="btn btn-warning btn-lg me-3" (click)="onAddJob()" *ngIf="checkAdmin()">Add Job Request</button>
+    </div>
+    <div class="col">
+      <input type="text" #searchBox class="form-control me-3" style="width: 300px; height: 50px;" placeholder="Search Jobs by name" (input)="onSearch(searchBox.value)">
+    </div>
+    <div class="col-auto text-end"> <!-- Right-aligned for LogOut button -->
+      <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/login']">LogOut</button>
+    </div>
+  </div>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">RRID</th>
+          <th scope="col">JD</th>
+          <th scope="col">Open Positions(Internal)</th>
+          <th scope="col">Open Positions(External)</th>
+          <th scope="col">Closed Positions</th>
+          <th scope="col">Job Status</th>
+          <th scope="col"  *ngIf="!checkAdmin()">Applied Status</th>
+          <th scope="col" *ngIf="checkAdmin()">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of filteredJobs" > 
+            <td>
+                <a [routerLink]="['/profiles', job.id,job.jobDescription]" [queryParams]="{ rrid: job.rrid }" routerLinkActive="active current">{{ job.rrid }}</a>
+            </td>
+            <td>{{job.jobDescription}}</td>
+            <td>{{job.noOfPositions}}</td>
+            <td>{{job.externalPositions}}</td>
+            <td>{{job.selectedPositions}}</td>
+            <td>{{job.status}}</td>
+
+            <td *ngIf="!checkAdmin(); "  >
+              <Button type="button" class="btn btn-warning btn me-3" (click)="AddProfile(job.id,job.rrid)" *ngIf="job.appliedStatus=='Not Applied' && job.status=='Active'">Apply</Button>
+              <span *ngIf="job.appliedStatus=='Applied' && job.status=='Active'" >Applied</span>
+              <span *ngIf="job.status=='InActive'">No Openings</span>
+            </td>
+            <td *ngIf="checkAdmin()">
+               <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#jobEditModal" (click)="onUpdate(job)">Edit</button>
+                <button type="button" class="btn btn-danger me-2" (click)="onDelete(job.id)">Delete</button>
+            </td>
+        </tr>
+       
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+<!-- Job Modal -->
+<div class="modal fade" id="jobEditModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="jobModalLabel">Update Job</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="jobEditFormGroup" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="jobDescription">Job Description</label>
+              <textarea class="form-control" id="jobDescription" name="jobDescription" formControlName="jobDescription" placeholder="Enter job description"></textarea>
+              <span *ngIf="jobEditFormGroup.get('jobDescription')?.touched && jobEditFormGroup.get('jobDescription')?.hasError('required')" class="text-danger">Job description required</span>
+            </div>
+            <div class="form-group">
+              <label for="noOfPositions">Open Positions(Internal)</label>
+              <input type="number" class="form-control" id="noOfPositions" name="noOfPositions" formControlName="noOfPositions" placeholder="Enter number of positions">
+              <span *ngIf="jobEditFormGroup.get('noOfPositions')?.touched && jobEditFormGroup.get('noOfPositions')?.hasError('required')" class="text-danger">Number of positions required</span>
+            </div>
+            <div class="form-group">
+              <label for="noOfPositions">Open Positions(External)</label>
+              <input type="number" class="form-control" id="externalPositions" name="externalPositions" formControlName="externalPositions" placeholder="Enter number of positions">
+              <span *ngIf="jobEditFormGroup.get('externalPositions')?.touched && jobEditFormGroup.get('externalPositions')?.hasError('required')" class="text-danger">Number of positions required</span>
+            </div>
+            <div class="form-group">
+              <label for="selectedPositions">Closed Positions</label>
+              <input type="number" class="form-control" id="selectedPositions" name="selectedPositions" formControlName="selectedPositions" placeholder="Enter number of selected positions">
+              <span *ngIf="jobEditFormGroup.get('selectedPositions')?.touched && jobEditFormGroup.get('selectedPositions')?.hasError('required')" class="text-danger">Selected positions required</span>
+            </div>
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select class="form-control" id="status" name="status" formControlName="status">
+                <option value="Active">Active</option>
+                <option value="InActive">InActive</option>
+              </select>
+              <span *ngIf="jobEditFormGroup.get('status')?.touched && jobEditFormGroup.get('status')?.hasError('required')" class="text-danger">Status required</span>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

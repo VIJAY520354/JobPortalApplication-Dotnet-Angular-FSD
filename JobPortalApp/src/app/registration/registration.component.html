@@ -1,0 +1,67 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+      <!-- Left side with image background -->
+      <div class="col-md-7 d-none d-md-block p-0 position-relative image-container">
+          <!-- Background image as an image -->
+          <img src="https://www.aalpha.net/wp-content/uploads/2021/05/job_search_portals.png" class="img-fluid h-100 w-100" alt="Background Image">
+      </div>
+      
+      <!-- Right side with form -->
+      <div class="col-md-5 d-flex justify-content-center align-items-center">
+          <!-- Form container with background -->
+          <div class="form-container">
+              <!-- Title and heading -->
+              <h3 class="heading">Register</h3>
+              <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
+                  <div class="row">
+                      <!-- Column for inputs -->
+                      <div class="col">
+                          <!-- Name input field -->
+                          <div class="form-group mb-3">
+                              <label for="name">Name</label>
+                              <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Enter name">
+                              <span *ngIf="registerFormGroup.get('name')?.touched && registerFormGroup.get('name')?.hasError('required')" class="error-message">Name required</span>
+                              <span *ngIf="registerFormGroup.get('name')?.touched && registerFormGroup.get('name')?.hasError('pattern')" class="error-message">Name should contain only characters and spaces</span>
+                          </div>
+                          
+                          <!-- Email input field -->
+                          <div class="form-group mb-3">
+                              <label for="email">Email</label>
+                              <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="Enter email">
+                              <span *ngIf="registerFormGroup.get('email')?.touched && registerFormGroup.get('email')?.hasError('required')" class="error-message">Email required</span>
+                              <span *ngIf="registerFormGroup.get('email')?.touched && registerFormGroup.get('email')?.hasError('email')" class="error-message">Email must be a valid email address</span>
+                              <span *ngIf="registerFormGroup.get('email')?.touched && registerFormGroup.get('email')?.hasError('pattern')" class="error-message">Email must be a valid email address</span>
+                          </div>
+                      </div>
+                      
+                      <!-- Column for inputs -->
+                      <div class="col">
+                          <!-- Password input field -->
+                          <div class="form-group mb-3">
+                              <label for="password">Password</label>
+                              <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Enter password">
+                              <span *ngIf="registerFormGroup.get('password')?.touched && registerFormGroup.get('password')?.hasError('required')" class="error-message">Password required</span>
+                              <span *ngIf="registerFormGroup.get('password')?.touched && registerFormGroup.get('password')?.hasError('minlength')" class="error-message">Password must be at least 6 characters long</span>
+                              <span *ngIf="registerFormGroup.get('password')?.touched && registerFormGroup.get('password')?.hasError('pattern')" class="error-message">Password must contain at least 6 characters with 1 lowercase, 1 uppercase, 1 digit, 1 special character</span>
+                          </div>
+                          
+                          <!-- Contact Number input field -->
+                          <div class="form-group mb-3">
+                              <label for="contactNumber">Contact Number</label>
+                              <input type="text" class="form-control" id="contactNumber" name="contactNumber" formControlName="contactNumber" placeholder="Enter contact number">
+                              <span *ngIf="registerFormGroup.get('contactNumber')?.touched && registerFormGroup.get('contactNumber')?.hasError('required')" class="error-message">Contact Number required</span>
+                              <span *ngIf="registerFormGroup.get('contactNumber')?.touched && registerFormGroup.get('contactNumber')?.hasError('pattern')" class="error-message">Contact Number should contain 10 digits</span>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Form buttons -->
+                  <div class="button-group d-flex">
+                      <button type="submit" class="btn btn-primary me-2">Register</button>
+                      <button type="button" class="btn btn-secondary" (click)="onBack()">Cancel</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

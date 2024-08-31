@@ -1,0 +1,182 @@
+.container {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f0f9ff, #cbebf5);
+  }
+  
+ 
+  h2.text-primary {
+    color: #3498db;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+ 
+  .row {
+    margin-bottom: 1.5rem;
+  }
+  
+  .col-auto {
+    margin-right: 1rem;
+  }
+  
+  .btn-warning {
+    background-color: #f39c12;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e67e22;
+    transform: scale(1.05);
+  }
+  
+  .btn-primary {
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+  
+  
+  .form-control {
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .form-control:focus {
+    border-color: #2980b9;
+    outline: none;
+  }
+  
+ 
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  
+  .table-bordered {
+    border: 1px solid #dee2e6;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .thead-dark {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .table th, .table td {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .table a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .table a:hover {
+    text-decoration: underline;
+  }
+  
+ 
+  .modal-content {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    background-color: #3498db;
+    color: #fff;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+  }
+  
+  .modal-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+  }
+  
+  .modal-footer {
+    border-top: none;
+    padding-top: 1rem;
+  }
+  
+  .modal-footer .btn-primary {
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+  }
+  
+  .modal-footer .btn-primary:hover {
+    background-color: #2980b9;
+  }
+  
+  .modal-footer .btn-secondary {
+    background-color: #e0e0e0;
+    border: none;
+    color: #333;
+  }
+  
+  .modal-footer .btn-secondary:hover {
+    background-color: #ccc;
+  }
+  
+  
+  .text-danger {
+    font-size: 0.875rem;
+    color: #e74c3c;
+    margin-top: 0.25rem;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .btn-lg {
+      font-size: 0.875rem;
+      padding: 0.5rem 1.5rem;
+    }
+  
+    .form-control {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    .row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  
+/* Logo Container Styling */
+.logo-container {
+  position: absolute;
+  top: 17px;
+  left: 66.5px;
+  z-index: 10; /* Ensure the logo is above other content */
+}
+
+/* Logo Styling */
+.logo {
+  max-width: 100px; /* Reduced size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8%;
+}

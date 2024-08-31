@@ -1,0 +1,126 @@
+/* Base container styling */
+.container {
+    background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Card styling */
+  .card {
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+  }
+  
+  /* Header styling */
+  .card h2 {
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 4px solid #f39c12;
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Label styling */
+  .form-group label {
+    font-weight: bold;
+    color: #f39c12;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Input and textarea styling */
+  .form-control {
+    border: 2px solid #f39c12;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ecf0f1;
+    color: #2c3e50; /* Text color inside inputs */
+    font-family: 'Poppins', sans-serif; /* Font family for text inside inputs */
+    font-weight: 500; /* Medium font weight for better readability */
+  }
+  
+  /* Colorful text effect for entered text */
+  .form-control::placeholder {
+    color: #7f8c8d; /* Placeholder text color */
+    font-style: italic; /* Italicize placeholder text */
+  }
+  
+  .form-control:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 0 0.2rem rgba(255, 87, 34, 0.25);
+    outline: none;
+  }
+  
+  /* Add a gradient to the text inside the input fields */
+  .form-control {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: transparent; /* Hide the default text color */
+    background-clip: text; /* Clip the background gradient to the text */
+    -webkit-background-clip: text; /* For WebKit-based browsers */
+  }
+  
+  /* Textarea specific styling */
+  textarea.form-control {
+    height: 150px; /* Default height for textarea */
+    resize: vertical; /* Allow vertical resizing */
+  }
+  
+  /* Error message styling */
+  .text-danger {
+    font-size: 0.875rem;
+    color: #e74c3c;
+    margin-top: 0.25rem;
+  }
+  
+  /* Select styling */
+  .form-control {
+    background-color: #ecf0f1;
+    color: #333;
+  }
+  
+  .form-control option {
+    color: #333;
+  }
+  
+  /* Button styling */
+  .btn {
+    border-radius: 25px;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-primary {
+    background-color: #f39c12;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e67e22;
+    transform: scale(1.05);
+  }
+  
+  .btn-secondary {
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
